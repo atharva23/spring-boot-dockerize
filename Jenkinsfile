@@ -12,6 +12,6 @@ node {
     }
     stage('Run_Docker_Container') {            
             // Run Docker container
-            sh 'docker run -d -p 9090:8080 spring-boot-docker.jar'            
+            sh 'docker run -d -p 9090:8082 spring-boot-docker.jar'            
     }    
 }
