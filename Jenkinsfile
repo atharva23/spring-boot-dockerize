@@ -6,6 +6,13 @@ node {
         // sh 'rm -rf target'
         sh 'mvn package'
     }
+      stage('SonarQube Analysis') {
+        def mvn = tool 'Default Maven';
+        withSonarQubeEnv() {
+          sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=test -Dsonar.projectName='test'"
+        }
+      }    
+        
     stage('Docker_Build') {            
             // Build Docker image
             sh 'docker build -t spring-boot-docker.jar .'            
