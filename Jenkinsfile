@@ -2,16 +2,17 @@ node {
     stage('SCM') {
         checkout scm
     }
-    stage('Maven_Build') {
-        // sh 'rm -rf target'
-        sh 'mvn package'
-    }
-      stage('SonarQube Analysis') {
+          stage('SonarQube Analysis') {
         withSonarQubeEnv() {
           sh "mvn clean verify sonar:sonar -Dsonar.projectKey=test -Dsonar.projectName='test'"
         }
       }    
         
+    stage('Maven_Build') {
+        // sh 'rm -rf target'
+        sh 'mvn package'
+    }
+
     stage('Docker_Build') {            
             // Build Docker image
             sh 'docker build -t spring-boot-docker.jar .'            
