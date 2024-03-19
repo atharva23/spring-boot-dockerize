@@ -4,7 +4,7 @@ node {
     }
           stage('SonarQube Analysis') {
         withSonarQubeEnv() {
-          sh "mvn clean verify sonar:sonar -Dsonar.projectKey=test -Dsonar.projectName='test'"
+          sh "mvn clean verify sonar:sonar -Dsonar.projectKey=spring-boot-dockerizeh -Dsonar.projectName='spring-boot-dockerize'"
         }
       }    
         
