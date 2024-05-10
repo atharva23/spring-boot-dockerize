@@ -9,6 +9,7 @@ node {
       }    
         
     stage('Maven_Build') {
+        //first changes
         // sh 'rm -rf target'
         sh 'mvn package'
     }
